@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js代码编写的三个位置</title>
+    <!-- 正常来说script写在这里会报错 因为代码从上到下执行 还没有执行到
+    button 就让它 onclick 是不可能的 -->
+     <!-- window这条语句会让浏览器把所有代码执行完毕，在执行它这内部的代码
+    所以如果script想写在上面还不出错，就要用这个 但是不建议用这个 还是写在下面 -->
+    <!-- <script>
+        window.onload = function(){
+            document.getElementById('btn').onclick = function(){
+                alert('我被点击了！');
+            };
+        };
+    </script> -->
+</head>
+<body>
+    <button id="btn">点我</button>
+    <script src="demo.js">
+        // 意思是在当前文档中，获取元素的id。
+        // document.getElementById('btn').onclick = function(){
+        //     alert('我被点击了！');
+        // };
+    </script>
+</body>
+</html>

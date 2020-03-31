@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js基础-数据类型</title>
+</head>
+<body>
+    <script>
+        // 1.boolean
+        var a = true;
+        var b = false;
+
+        // 2.number
+        var c = 5;
+        var d = 4.5;
+
+        // 3.string
+        // 单引号和双引号都可以
+        //    \为转义字符
+        var e = "abc";
+        /*var f = 'abc';
+        var g = 'abc\'';
+        var h = "abc\"";
+
+        console.log(e);
+        console.log(f);
+        console.log(g);
+        console.log(h);*/
+
+        // 4.undefined
+        // 声明一个变量，并没有赋值，它代表未定义
+        var f;
+
+        // 打印出来undefined
+        console.log(f);
+
+        // 5.null
+
+        // typeof可以打印出数据的类型 当打印null时会打印出object(对象)
+        // 其他类型打印出它们本身
+        console.log(    typeof(null)   );
+        // 打印结果为真
+        // 因为默认 undefined 是从 null 继承过来的 ，这样理解就可以 
+        console.log(    undefined == null   ); 
+
+        // 十六进制定义：前面需要用0X开头，x大写小写都可以
+        // 换算成十进制10*16 + 11*1 = 171
+        var iNum = 0xAB;
+
+        console.log(  iNum  );
+
+        // 八进制定义：前面需要用0开头
+        // 7*8 + 0*1 = 56
+        var g = 070;
+
+        console.log(  g  );
+        // 科学计数法：5.618*10的7次方 = 56180000
+        var fNum = 5.618e7;
+
+        console.log(  fNum  );
+    </script>
+</body>
+</html>

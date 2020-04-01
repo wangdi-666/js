@@ -83,6 +83,31 @@ Pascal 标记法： 首字母是大写的，接下来的字母都是大写的
 ECMAScript 原始类型：
 有5种：即Undefined,Null,Boolean,Number和String
 
+三，
+
+对象(Object)       一切皆对象
+特征+行为 = 属性+方法 = 对象
+
+面向对象的三大特征：
+Object-Oriented Analysis(OOA)  面向对象的分析
+Object-Oriented Design(OOD)  面向对象的设计
+Object-Oriented Programming(OOP)  面向对象的编程
+
+this只能在当前指向的方法中使用
+自己定义的变量可以在任何位置使用
+
+数组(Array)
+数组中比较常见的方法：
+push();     在数组的最后面增加一个值,并返回新的长度
+pop();      删除并返回数组的最后一个元素
+unshift();  在数组的最前面增加一个值,并返回新的长度
+shift();    删除并返回数组的第一个元素
+splice();   删除元素，并向数组添加新元素
+以上这些是常用的，还有很多，通过借鉴手册
+
+
+
+
 
 
 

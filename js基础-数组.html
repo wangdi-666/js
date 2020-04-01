@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js基础-数组</title>
+</head>
+<body>
+    <script>
+        // 第一种赋值的方式
+        /*var arr = new Array();
+        arr[0] = 11;
+        arr[1] = 22;*/
+
+        // 第二种赋值的方式
+        /*直接给数组赋了三个值，用逗号隔开 
+        但是如果直接 var arr = new Array(2); 这样写
+        代表的是创建了2个空间的数组 且并没有赋值 只存在两个空元素
+        但是如果里面写的是一个字符串  不是数字  那就肯定是赋值
+        不是创建空间为多大的数组*/
+        // var arr = new Array('abc',11,22,33);
+
+        // 第三种赋值的方式
+        var arr = [2,5,8,9];
+
+        // 在数组的最后面增加一个值,并返回新的长度
+        arr.push(10);
+        arr.push(3);
+        // 删除并返回数组的最后一个元素
+        arr.pop();
+        // 在数组的最前面增加一个值,并返回新的长度
+        arr.unshift(1);
+         // 删除并返回数组的第一个元素
+        arr.shift();
+
+        var arr1 = ["john","alice","bob"];
+        // 如果第二个参数没有写的话  会从索引的位置开始一直删到最后
+        // 第二个参数写几个就是删几个
+        // 第三个参数往后是要添加的值 会从删除的位置开始添加
+        arr1.splice(1, 1,"lily","lisi");
+
+        for(var i=0; i<arr1.length; i++){
+            console.log(arr1[i]);
+        }
+
+        // 循环遍历数组
+        for(var i=0; i<3; i++){
+            console.log(arr[i]);
+        }
+
+        // 当不知到数组长度的时候 用length属性 来确定数组长度
+        for(var i=0; i<arr.length; i++){
+            console.log(arr[i]);
+        }
+
+        /*console.log(arr);
+        console.log(arr[0]);*/
+    </script>
+</body>
+</html>

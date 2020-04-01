@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js基础-对象</title>
+</head>
+<body>
+    <script>
+        //1.new Object() 第一种创建对象的方式   不建议用第一种方式
+        // // 创建一个对象
+        // var cat = new Object();   //构造函数
+        // // 创建对象的名字属性
+        // cat.name = 'mimi';
+        // // 创建对象的体重属性
+        // cat.weight = 3;
+        // // 创建对象的种类属性
+        // cat.variety = '蓝猫';
+        // // 创建猫吃的方法
+        // cat.eat = function(){
+        //     console.log('mimi is eating...');
+        // };
+        // 抓老鼠的方法
+        // cat.catchMouse = function(){
+        //     console.log('mimi is catching mouse...');
+        // };
+
+        // 2.直接量   第二种创建对象的方式      建议用第二种方式
+        var cat = {
+            name: 'mimi',
+            weight: 3,
+            variety: '蓝猫',
+            eat: function(){
+                // this 代表对当前对象的引用   直接用cat.name也是可以正常打印的 
+                //   但是如果cat的变量名改了就很麻烦  所以还是用this
+                // this只能在当前指向的方法中使用  自己定义的变量可以在任何位置使用
+                console.log(this.name + ' is eating...');
+            },
+            catchMouse: function(){
+                console.log(this.name + ' is catching mouse...');
+            }
+
+        };
+
+        console.log(cat.name);
+        cat.eat();
+
+        // 如果function不放到对象里面去，叫函数，不叫方法
+        function test(){
+
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom基础-获取元素</title>
+</head>
+<body>
+    <button id="btn">点我</button>
+
+    <ul id="ul1">
+        <li>item 1</li>
+        <li class="bg-red">item 2</li>
+        <li class="bg-red">item 3</li>
+    </ul>
+
+    <script>
+        var btn = document.getElementById('btn');
+        btn.onclick = function(){
+            console.log('hello');
+        };
+
+        /* 根据标签的名字获取元素  因为直接获取标签会有很多元素被获取过来
+            所以用数组储存  此例子获取过来的就是三个li的元素  也就是三个dom对象*/
+        // var arr = document.getElementsByTagName('li');
+
+        // 根据类的名字获取元素   老的浏览器IE6不支持这个语法
+        var arr = document.getElementsByClassName('bg-red');
+
+        for(var i=0; i<arr.length; i++){
+            arr[i].style.background = '#f00';
+        }
+
+    </script>
+</body>
+</html>

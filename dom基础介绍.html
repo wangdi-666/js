@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom基础介绍</title>
+</head>
+<style>
+    #div1{
+        width: 200px;
+        height: 100px;
+        background: #cccccc;
+    }
+</style>
+<body>
+    
+    <a href="">我的连接</a>
+
+    <h1>我的标题</h1>
+
+    <div id="div1"></div>
+
+    <script>
+        // getElementById();这个方法是通过 id 来获取一个元素
+        var div = document.getElementById('div1');
+        // 给div添加一个点击的事件
+        div.onclick = function(){
+            // 点击完之后使背景变成红色
+            div.style.background = '#ff0000';
+        };
+    </script>
+</body>
+</html>

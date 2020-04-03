@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 全局变量
+        var b = 4;
+        function test(){
+            // 在这打印也是不会报错的,会打印出,undefined,因为函数内会在上面默认有一个 var a;
+            // 默认声明完了,只是未定义而已,所以打印 undefined 
+            console.log(a);
+            // 局部变量
+            var a = 5;
+            // 在函数里面实现了把b的值改成6的功能
+            // b = 6;
+            // 当在函数里面用var在声明b的时候,与外面的b没有关系,b的值也不会变成6
+            var b = 6;
+            c = 8;
+
+        }
+
+        test();
+
+        console.log(b);
+        console.log(c);
+
+        /*总结:当在函数中用var声明一个变量,那它就是局部的;
+        不用var声明就是全局的,和在函数外用var 声明的全局变量一样*/
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom基础-操作元素</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 100px;
+            background: #cccccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">我是div</div>
+
+    <button id="btn">点我</button>
+
+    <!-- 这里的aa属性是我们自定义的 也可以对它操作 -->
+    <h1 id="h1" class="bb" aa="bb">我是标题</h1>
+
+    <div id="div2">
+
+    </div>
+
+    <button id="btn2">插入一行</button>
+    <button id="btn3">删除一行</button>
+    <button id="btn4">替换一行</button>
+
+    <ul id="ul1">
+        <li>item</li>
+        <li>item</li>
+    </ul>
+
+    <script>
+
+       /* var person = {
+            name: 'lisi',
+            age: 20,
+            brother: {
+                name: 'lixx',
+                age: 22,
+                wife:{
+                    name:'zhangxx'
+                }
+            }
+        };
+        // 这就是属性的调用过程
+        console.log(person.brother.wife.name);*/
+
+        var div1 = document.getElementById('div1');
+        div1.onclick = function(){
+            // style是div1对象的属性，background是style对象的属性，所以可以用 . 来获取
+            div1.style.background = '#f00';
+            // 点击的时候把背景文字变成绿色
+            div1.style.color = '#0f0';
+            // 点击后字体变大点  css中原句是font-size   但是此处属性命名不允许有 - 所以改成驼峰式fontSize4
+            // 当通过js来改变样式时，其他的对属性的引用都和css中一样  ，只有出现了 - 这个符号就改成驼峰式
+            div1.style.fontSize = '46px';
+        };
+
+        var btn = document.getElementById('btn');
+        var h1 = document.getElementById('h1');
+        var div2 = document.getElementById('div2');
+        btn.onclick = function(){
+            // innerHTML 就是代表内容的意思 此处就是指h1里面的内容  此处是利用innerHTML修改值的属性
+            // h1.innerHTML = 'haha';
+            // 此处就是体现innerHTML获取值的属性  获取h1中的内容并打印出来
+            // console.log(h1.innerHTML);
+
+            // 当点击按钮的时候，把h1的id改了  一般不会这么干 
+            // h1.id = "aa";
+
+            // 因为class属性是关键字,所以用className来表示  
+            // 此处实现的功能是 当点击按钮的时候 把h1的class的名字改了
+            // h1.className = "cc";
+
+            //我们试图通过h1.aa的方式把aa打印出来  但是是打印不出来的 因为自定义的属性是不能通过h1.aa进行访问的
+            //  可以通过getAttribute来获取aa的属性   attribute单词的意思就是属性
+            // console.log(h1.aa);
+            // console.log(h1.getAttribute('aa'));
+
+            /* setAttribute()有两个参数,第一个参数为属性本身,第二个参数为属性内容
+            功能就是把属性的内容做一个修改 本题就是把aa属性的内容改成cc*/
+            // h1.setAttribute("aa","cc");
+            // console.log(h1.getAttribute('aa'));
+
+            // 这个更改 不仅打印出来了 而且在源代码上也改变了更改了
+            // h1.id = "haha";
+            // console.log(h1.id);
+
+            // 这个更改 只打印出来了 在源代码上没有任何改变
+            // h1.aa = "hahaha";
+            // console.log(h1.aa);
+
+            // createElement()为创建元素的方法 ()里面放所要创建的元素
+            // 只是在内存中创建了,并没有插入到网页中
+            var p1 = document.createElement('p');
+
+            // 给p标签中加内容
+            p1.innerHTML = '这是一个p'
+            // 在网页body中追加一个元素  不可以直接document.appendChild(p1); 因为document属于HTML的上一层,需要在HTML中添加元素
+            // document.body.appendChild(p1);
+
+            // 在div2中插入p元素
+            div2.appendChild(p1);
+
+            // 删除div2中的p元素
+            div2.removeChild(p1);
+        };
+
+        var btn2 = document.getElementById('btn2');
+        var ul1 = document.getElementById('ul1');
+        var btn3 = document.getElementById('btn3');
+        var btn4 = document.getElementById('btn4');
+
+
+        var li;
+        btn2.onclick = function(){
+            li = document.createElement('li');
+            li.innerHTML = "haha";
+            ul1.appendChild(li);
+
+        };
+
+        btn3.onclick = function(){
+            // 只能删除动态生成的最后一个li,因为指针指向最后一个li
+            ul1.removeChild(li);
+        };
+
+        btn4.onclick = function(){
+            var newLi = document.createElement('li');
+            newLi.innerHTML = 'new li...';
+            // getElementsByTagName()为根据标签的名字获取元素 因为是Elements 加了s 所以返回的是数组
+            var arr = ul1.getElementsByTagName('li');
+
+            // 替换元素 第一个参数是新的,第二个参数是旧的(也就是需要替换掉的)
+            ul1.replaceChild(newLi, arr[1]);
+        };
+    </script>
+</body>
+</html>

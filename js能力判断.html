@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = {
+            eat:function(){
+                // ...
+            }
+        };
+
+        var b = null;
+        // if()里面的如果是非零的数字，非空字符串，true和非空的对象是有效的，也就是真
+        /*if(a){
+            alert('haha');
+        }*/
+
+        // 上面的a虽然{}中没有内容，但是也不是空的对象  但是b = null  所以b是空对象
+        /*if(b){
+            alert('hahaha');
+        }*/
+
+        // eat后面不要加括号  因为这个是判断方法存不存在  功能是判断a中是否存在这个方法
+        if(a.eat){
+            alert('haha');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom基础-事件</title>
+</head>
+<body>
+    <button id="btn">点我</button>
+
+    <script>
+        var btn = document.getElementById('btn');
+
+        // 此处为绑定一个点击的事件
+        /* 当想进行多个事件绑定的时候 就不能直接像下面这样声明 
+        所以先注释掉  需要通过用addEventListener();来完成 */
+        /*btn.onclick = function(){
+            console.log(11);
+        };
+        btn.onclick = function(){
+            console.log(22);
+        };*/
+
+        /* addEventListener();  添加一个事件监听器  IE8(包含IE8)之前的浏览器是不支持的
+        第一个参数为绑定事件的类型(单机事件，鼠标事件，还是键盘事件)   这里面不用写on直接click就可以
+         第二个参数为事件处理的函数  也就是指上面的function
+         第三个参数就是事件冒泡(false)和事件捕获(true)*/
+        // 这样当点击的时候两个事件都正常执行了
+        /*btn.addEventListener('click',function(){
+            console.log(11);
+            // 可以在浏览器中弹出一个提示框
+            alert(11);
+        },false);
+        btn.addEventListener('click',function(){
+            console.log(22);
+        },false);*/
+
+        /* IE8(包含IE8)之前的浏览器使用这个，它只有两个参数
+          当然现代的浏览器也不支持这个语法  所以注释掉*/
+        /*btn.attachEvent('onlick',function(){
+            // 因为ie6中也不支持console.log(11); 所以用alert来弹出提示框来实现
+            alert(11);
+        });
+        btn.attachEvent('onlick',function(){
+            alert(22);
+        });*/
+
+        // 通过if来先判断方法是否存在，再调用  这样就处理了浏览器的兼容问题
+        /*if(btn.addEventListener){
+            btn.addEventListener('click',function(){
+                console.log(11);
+                // 可以在浏览器中弹出一个提示框
+                alert(11);
+            },false);
+        }else{
+            btn.attachEvent('onlick',function(){
+                alert(22);
+            });
+        }*/
+
+
+        var fn = function(){
+            alert(11);
+        };
+
+        // 通过fn的方式达到添加和绑定的是同一个函数
+        btn.addEventListener('click',fn,false);
+
+        // 完成移除事件的功能
+        btn.removeEventListener('click',fn,false);
+
+    </script>
+</body>
+</html>

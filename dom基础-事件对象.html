@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom基础-事件对象</title>
+    <style>
+        #a{
+            width: 400px;
+            height: 400px;
+            background: #ff0000;
+        }
+        #b{
+            width: 300px;
+            height: 300px;
+            background: #00ff00;
+        }
+        #c{
+            width: 200px;
+            height: 200px;
+            background: #0000ff;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="btn">点我</button>
+
+    <div id="a">
+        a
+        <div id="b">
+            b
+            <div id="c">
+                c
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        var btn = document.getElementById('btn');
+
+        // 这里也存在兼容性问题  在ie6中得用window.event来表示e
+        btn.onclick = function(e){
+            // 也是一种能力判断  来解决兼容性的问题  || 表示或的意思
+            e = e || window.event
+            // e.type就是表示事件的类型
+            console.log(e.type);
+        };
+
+        var divA = document.getElementById('a');
+        var divB = document.getElementById('b');
+        var divC = document.getElementById('c');
+
+        /* 事件冒泡，当点击最内层元素c的时候，它的父辈也会执行，
+        c冒泡到b，b冒泡到a，a冒泡到body，body冒泡到html，html冒泡到document */
+        /*divA.onclick = function(){
+            console.log('a');
+        };
+        divB.onclick = function(){
+            console.log('b');
+        };
+        divC.onclick = function(e){
+            e = e || window.event;
+            console.log('c');
+            // e.stopPropagation();阻止事件传播，避免了事件冒泡 
+            // 在ie8之前是没有这个语法的(还是浏览器不兼容的问题)
+            // 利用 e.cancelBubble = true;和 e = e || window.event;就解决了不兼容的问题
+            // cancelBubble单词就是取消冒泡的意思 ie8 之前的浏览器支持这个语法
+            // e.cancelBubble = true;
+            // e.stopPropagation();
+        };
+        document.body.onclick = function(){
+            console.log('body');
+        };
+        document.documentElement.onclick = function(){
+            console.log('html');
+        };
+        document.onclick = function(){
+            console.log('document');
+        };*/
+
+        // false是冒泡，true是捕获
+        // 本例子演示捕获
+        divA.addEventListener('click',function(){
+            console.log('捕获-a');
+        },true);
+
+        divB.addEventListener('click',function(){
+            console.log('捕获-b');
+        },true);
+
+        divC.addEventListener('click',function(){
+            console.log('捕获-c');
+        },true);
+
+        divA.addEventListener('click',function(){
+            console.log('冒泡-a');
+        },false);
+
+        divB.addEventListener('click',function(){
+            console.log('冒泡-b');
+        },false);
+
+        divC.addEventListener('click',function(){
+            console.log('冒泡-c');
+        },false);
+        
+    </script>
+</body>
+</html>

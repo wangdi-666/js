@@ -4,9 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dom基础-事件</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 100px;
+            background: #cccccc;
+        }
+    </style>
 </head>
 <body>
+
+    <!-- 输入框  -->
+    <input type="text" id="ipt">
+
     <button id="btn">点我</button>
+
+    <div id="div1"></div>
 
     <script>
         var btn = document.getElementById('btn');
@@ -66,9 +79,48 @@
         // 通过fn的方式达到添加和绑定的是同一个函数
         btn.addEventListener('click',fn,false);
 
-        // 完成移除事件的功能
+        // 完成移除事件的功能  浏览器就不会弹出 11 的提示框 因为刚添加的事件就被移除了
         btn.removeEventListener('click',fn,false);
 
+
+        var ipt = document.getElementById('ipt');
+        /* 功能为将键盘输入的值打印出来  也就是每次按键盘的时候都打印输入框的内容
+        因为onkeydown是按下的一瞬间就执行  所以打印的时候存在一个空档期 
+        所以为了满足需求 这里使用onkeyup */
+        /*ipt.onkeydown = function(){
+            // value这个属性是会默认在输入框里面放入值，所以通过获取value这个属性
+            console.log(ipt.value);
+        };*/
+        ipt.onkeyup = function(){
+            console.log(ipt.value);
+        };
+
+        // 获取键盘上面每个字符对应的ASCII码
+        /*ipt.onkeyup = function(e){
+            console.log(e.keyCode);
+        };*/
+
+        var div1 = document.getElementById('div1');
+        // 当按下鼠标时
+        div1.onmousedown = function(){
+            console.log('down');
+        };
+        // 当松开鼠标时
+        div1.onmouseup = function(){
+            console.log('up');
+        };
+        // 当鼠标移动时
+        div1.onmousemove = function(){
+            console.log('move');
+        };
+        // 当鼠标划入时
+        div1.onmouseover = function(){
+            console.log('over');
+        };
+        // 当鼠标划出时
+        div1.onmouseout = function(){
+            console.log('out');
+        };
     </script>
 </body>
 </html>

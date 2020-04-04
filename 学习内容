@@ -179,6 +179,44 @@ var test = function(){
 
 btn.onclick在所有浏览器中都支持，存在的问题是，不能多次绑定
 
+七，
+
+常用事件：
+单击事件：
+onclick   当用户点击某个对象时调用的事件句柄
+键盘事件：
+onkeydown   某个键盘按键被按下
+onkeypress  某个键盘按键被按下并松开
+onkeyup     某个键盘按键被松开
+想要判断用户输入了哪些字符就用onkeyup ，判断用户按了哪个键就用onkeydown
+鼠标事件：
+onmousedown       当按下鼠标时
+onmouseup         当松开鼠标时
+onmousemove       当鼠标移动时
+onmouseover       当鼠标划入时
+onmouseout        当鼠标划出时
+
+事件，事件处理函数，事件对象
+例如：
+var btn = document.getElementById('btn');
+btn.onclick = function(e){
+     console.log(e.type);
+};
+其中，
+事件为onclick
+事件处理函数为function(){   };
+事件对象为 btn
+也就可以通过e下面的一些事件属性来完成一些操作
+
+事件冒泡：从内到外   从下到上
+事件捕获：从外到内   从上到下
+先捕获后冒泡
+捕获用的非常少，冒泡比较重要
+
+事件代理(委托)：
+利用事件冒泡来用 父 来处理 子 的事情
+
+
 
 
 

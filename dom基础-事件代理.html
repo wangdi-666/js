@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom基础-事件代理(委托)</title>
+</head>
+<body>
+
+    <ul id="ul1">
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+    </ul>
+
+    <script>
+        var oUl = document.getElementById('ul1');
+        var aLi = oUl.getElementsByTagName('li');
+
+
+        // 代码会出现问题，会有错误提示，提示aLi是为未定义的，
+        // 因为for循环在页面加载的时候已经被执行了，i就已经变成3了，
+        // 而点击的事件是在页面加载后才执行
+        // 解决办法就是把aLi[i]的位置换成this
+        //   以上注释 是一道经典的面试题
+        // 但是这个代码还存在性能的问题，在点击的过程中，for循环会执行很多次，
+        // for循环执行很快，不会有什么影响，但是每调用一次function就相当于在内存创建一个Function的对象
+        // 这样会占很多的内存，所以可以听过事件冒泡和 e. 下面的属性来优化它
+        // for(var i=0; i<aLi.length; i++){
+        //     aLi[i].onclick = function(){
+        //         console.log(/*aLi[i]*/this.innerHTML);
+        //     };
+        // }
+
+        // 利用事件冒泡来优化
+        oUl.onclick = function(e){
+            // 用这个处理e不兼容的问题
+            e = e || window.event;
+            // 用这个处理target不兼容的问题
+            var target = e.srcElement || e.target
+            // e.target是获取事件源的元素，也就是真正点击的那个元素
+            console.log(target.innerHTML);
+        };
+
+    </script>
+</body>
+</html>

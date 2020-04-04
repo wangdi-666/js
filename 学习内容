@@ -216,6 +216,21 @@ btn.onclick = function(e){
 事件代理(委托)：
 利用事件冒泡来用 父 来处理 子 的事情
 
+八，
+
+随机数
+Math.random()为生成随机数函数
+Math中还有：
+ceil(x);向上取整   例如：4.2 -》 5    4.8  -》5
+floor(x);向下取整  例如：4.2 -》4      4.8 -》 4
+parseInt   转换为整型的函数   例如： parseInt(4.2)=4  parseInt(4.9)=4  parseInt("120abc")=120
+
+offsetLeft
+
+定时器：
+有两种  setTimeout  和  setInterval
+定时器只有开始和停止没有暂停
+
 
 
 

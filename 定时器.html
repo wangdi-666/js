@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">开始定时器</button>
+
+    <button id="btn2">结束定时器</button>
+
+
+    <script>
+        var oBtn = document.getElementById('btn');
+        var oBtn2 = document.getElementById('btn2');
+        var timer;//要定义成全局变量
+        oBtn.onclick = function(){
+            // 这个定时器函数只能把function中的代码执行一次，
+            // 2000表示2000ms的时间，也就是两秒，会在两秒后再控制台打印随机数
+            /*setTimeout(function(){
+                console.log(Math.random());
+            },2000);*/
+
+            // 这个定时器函数可以重复无数次function中的代码，不主动结束它，它会一直执行
+            // 可以通过下面定义的变量timer终止定时器
+            timer = setInterval(function(){
+                console.log(Math.random());
+            },1000);
+        };
+
+        oBtn2.onclick = function(){
+            // clearInterval为结束定时器的函数，只要把定时器的值传给它就可以了
+            clearInterval(timer);
+        };
+
+        
+
+    </script>
+</body>
+</html>
